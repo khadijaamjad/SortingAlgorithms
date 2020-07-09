@@ -1,0 +1,46 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the number of Chemicals:");
+            int no = Convert.ToInt32(Console.ReadLine());
+            string[,] chem = new string[no, 3];
+            Console.WriteLine("Enter chemical name, concentration and volume:");
+            for (int m = 0; m < no; m++)
+            {
+                for (int n = 0; n < 3; n++)
+                {
+                    string val = Console.ReadLine();
+                    chem[m, n] = val;
+                }
+            }
+            for (int k = 0; k < no; k++)
+            {
+                for (int j = 1; j < no; j++)
+                {
+                        int n = chem[j-1, 2].CompareTo(chem[j, 2]);
+                        if (n == 1)
+                        {
+                            string temp1 = chem[j-1, 0];
+                            string temp2 = chem[j - 1, 1];
+                            string temp3 = chem[j - 1, 2];
+                            chem[j-1, 0] = chem[j, 0];
+                            chem[j - 1, 1] = chem[j, 1];
+                            chem[j - 1, 2] = chem[j, 2];
+                            chem[j, 0] = temp1;
+                            chem[j, 1] = temp2;
+                            chem[j, 2] = temp3;
+                        }
+                }
+            }
+            Console.WriteLine("Sorted Chemicals");
+            for (int m = 0; m < no; m++)
+            {
+                for (int n = 0; n < 3; n++)
+                {
+                    Console.Write(chem[m, n]+"\t");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
